@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrgabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/22 22:42:23 by mrgabo            #+#    #+#             */
-/*   Updated: 2022/06/12 00:32:34 by mrgabo           ###   ########.fr       */
+/*   Created: 2022/05/26 21:48:52 by mrgabo            #+#    #+#             */
+/*   Updated: 2022/05/26 23:47:28 by mrgabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Parametros: Un caracter visto como entero.
- *
- * Esta funcion evalua si el digito pasado pr parametro correponde a un valor 
- * ascii valido.
- *
- * Devuelve: Uno si el parametro es hace parte del codigo ascii o cero en caso
- * contrario. */
-
-int	ft_isascii(int c)
+char	*ft_strchr(const char *s, int c)
 {
-	if (0 <= c && c <= 127)
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	if (s == NULL)
+		return (NULL);
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+		i++;
+	}
+	if (s[i] == (char)c)
+		return ((char *)&s[i]);
+	return (NULL);
 }

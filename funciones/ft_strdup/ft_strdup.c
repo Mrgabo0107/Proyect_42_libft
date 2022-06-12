@@ -1,26 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrgabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/22 22:42:23 by mrgabo            #+#    #+#             */
-/*   Updated: 2022/06/12 00:32:34 by mrgabo           ###   ########.fr       */
+/*   Created: 2022/06/01 16:29:04 by mrgabo            #+#    #+#             */
+/*   Updated: 2022/06/01 17:14:16 by mrgabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Parametros: Un caracter visto como entero.
- *
- * Esta funcion evalua si el digito pasado pr parametro correponde a un valor 
- * ascii valido.
- *
- * Devuelve: Uno si el parametro es hace parte del codigo ascii o cero en caso
- * contrario. */
+#include <stdlib.h>
 
-int	ft_isascii(int c)
+size_t	ft_strlen(const char *s)
 {
-	if (0 <= c && c <= 127)
-		return (1);
-	return (0);
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+char	*ft_strdup(const char *s)
+{
+	char	*cpy;
+	size_t	len;
+	size_t	i;
+
+	len = ft_strlen(s);
+	cpy = (char *)malloc(len + 1);
+	if (!cpy)
+		return (NULL);
+	i = 0;
+	while (i <= len)
+	{
+		*(cpy + i) = *(s + i);
+		i++;
+	}
+	return (cpy);
 }

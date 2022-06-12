@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrgabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/22 22:42:23 by mrgabo            #+#    #+#             */
-/*   Updated: 2022/06/12 00:32:34 by mrgabo           ###   ########.fr       */
+/*   Created: 2022/05/27 12:56:54 by mrgabo            #+#    #+#             */
+/*   Updated: 2022/05/27 13:53:11 by mrgabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Parametros: Un caracter visto como entero.
- *
- * Esta funcion evalua si el digito pasado pr parametro correponde a un valor 
- * ascii valido.
- *
- * Devuelve: Uno si el parametro es hace parte del codigo ascii o cero en caso
- * contrario. */
+#include <stdlib.h>
 
-int	ft_isascii(int c)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	if (0 <= c && c <= 127)
-		return (1);
-	return (0);
+	unsigned char	*str;
+	unsigned char	k;
+	size_t			i;
+
+	i = 0;
+	str = (unsigned char *)s;
+	k = (unsigned char)c;
+	while (i < n)
+	{
+		if (str[i] == k)
+			return ((void *)(str + i));
+		i++;
+	}
+	return (NULL);
 }

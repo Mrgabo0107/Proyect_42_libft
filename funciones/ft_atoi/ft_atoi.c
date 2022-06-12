@@ -1,26 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrgabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/22 22:42:23 by mrgabo            #+#    #+#             */
-/*   Updated: 2022/06/12 00:32:34 by mrgabo           ###   ########.fr       */
+/*   Created: 2022/05/30 19:10:41 by mrgabo            #+#    #+#             */
+/*   Updated: 2022/05/30 22:11:35 by mrgabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Parametros: Un caracter visto como entero.
- *
- * Esta funcion evalua si el digito pasado pr parametro correponde a un valor 
- * ascii valido.
- *
- * Devuelve: Uno si el parametro es hace parte del codigo ascii o cero en caso
- * contrario. */
+#include <stdlib.h>
 
-int	ft_isascii(int c)
+int	ft_atoi(const char *nptr)
 {
-	if (0 <= c && c <= 127)
-		return (1);
-	return (0);
+	int	i;
+	int	j;
+	int	k;
+
+	i = 0;
+	j = 0;
+	k = 0;
+	while ((9 <= nptr[i] && nptr[i] <= 13) || nptr[i] == 32)
+		i++;
+	if (nptr[i] == '-')
+	{
+		k = 1;
+		i++;
+	}
+	else if (nptr[i] == '+')
+		i++;
+	while ('0' <= nptr[i] && nptr[i] <= '9')
+	{
+		j += nptr[i] - 48;
+		j *= 10;
+		i++;
+	}
+	if (k == 1)
+		j *= -1;
+	return (j / 10);
 }

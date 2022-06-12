@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrgabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/22 22:42:23 by mrgabo            #+#    #+#             */
-/*   Updated: 2022/06/12 00:32:34 by mrgabo           ###   ########.fr       */
+/*   Created: 2022/06/01 17:20:47 by mrgabo            #+#    #+#             */
+/*   Updated: 2022/06/01 22:29:49 by mrgabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Parametros: Un caracter visto como entero.
- *
- * Esta funcion evalua si el digito pasado pr parametro correponde a un valor 
- * ascii valido.
- *
- * Devuelve: Uno si el parametro es hace parte del codigo ascii o cero en caso
- * contrario. */
+#include <stdlib.h>
 
-int	ft_isascii(int c)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	if (0 <= c && c <= 127)
-		return (1);
-	return (0);
+	size_t	i;
+	char	*substr;
+
+	if (!s)
+		return (NULL);
+	substr = (char *)malloc(sizeof(char) * (len + 1));
+	if (!substr)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		substr[i] = s[start + i];
+		i++;
+	}
+	substr[i] = '\0';
+	return (substr);
 }

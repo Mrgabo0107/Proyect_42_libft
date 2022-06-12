@@ -1,30 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrgabo <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/24 13:34:41 by mrgabo            #+#    #+#             */
-/*   Updated: 2022/06/12 11:05:25 by mrgabo           ###   ########.fr       */
+/*   Created: 2022/05/27 12:35:36 by mrgabo            #+#    #+#             */
+/*   Updated: 2022/05/27 12:52:58 by mrgabo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Parametros: Puntero a una cadena de caracteres
- *
- * Esta funcion cuenta el numero de caracteres de un string desde el puntero al
- * primer caracter hasta el caracter '\0'.
- *
- * Devuelve: un size_t con el numero de caracteres */
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-#include "libft.h"
-
-size_t	ft_strlen(const char *s)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
 
 	i = 0;
-	while (s[i])
+	while (i < n)
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
 		i++;
-	return (i);
+	}
+	return (0);
+}
+
+int	main(void)
+{
+	char	str1[20] = "HolamuNdo";
+	char	str2[20] = "Holamundo";
+	int	i;
+
+	i = 0;
+	while (i < 20)
+	{
+		printf("mio = %d, org = %d \n", strncmp(str1, str2, i),strncmp(str1, str2, i));
+		i++;
+	}
+	return (0);
 }
